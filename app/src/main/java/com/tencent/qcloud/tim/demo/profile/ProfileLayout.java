@@ -121,6 +121,7 @@ public class ProfileLayout extends FrameLayout implements View.OnClickListener {
         ProfileSetting allowTypeSetting = new ProfileSetting();
         allowTypeSetting.setWeight(700);
         allowTypeSetting.setSettingView(allowTypeView);
+        allowTypeView.setVisibility(GONE);
         settingsList.add(allowTypeSetting);
 
         View statusView = inflate(getContext(), R.layout.profile_status_layout, null);

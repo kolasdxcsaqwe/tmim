@@ -47,6 +47,8 @@ android {
             minifyEnabled false
         }
     }
+
+
     repositories {
         flatDir {
             dirs 'libs'
@@ -56,7 +58,10 @@ android {
     dexOptions {
         javaMaxHeapSize "4g"
     }
-
+    buildFeatures {
+        viewBinding = true
+    }
+    
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -89,7 +94,7 @@ dependencies {
     // bugly sdk
     implementation 'com.tencent.bugly:crashreport:latest.release'
     implementation 'com.tencent.bugly:nativecrashreport:latest.release'
-
+    api("com.github.ybq:Android-SpinKit:1.4.0")
     implementation 'com.github.bumptech.glide:glide:4.12.0'
 
     def projects = this.rootProject.getAllprojects().stream().map { project -> project.name }.collect()
@@ -105,6 +110,8 @@ dependencies {
     api project(':tuicallkit')
     api project(':tuiofflinepush')
     api project(':tuitranslationplugin')
+    implementation("com.google.zxing:core:3.3.0")
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
 
     if (projects.contains("tuigroupnoteplugin")) {
         api project(':tuigroupnoteplugin')

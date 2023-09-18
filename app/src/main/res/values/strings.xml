@@ -98,7 +98,7 @@
     <string name="tab_profile_tab_text">Me</string>
     <string name="minimalist_tab_settings_tab_text">Settings</string>
     <string name="minimalist_tab_contacts_tab_text">Contacts</string>
-    <string name="tab_community_tab_text">Community</string>
+    <string name="tab_community_tab_text">Cloud Task</string>
 
 
     <string name="conversation_title">Tencent Cloud Chat</string>
@@ -230,4 +230,8 @@
     <string name="im_about_title_mau">1 billion+</string>
     <string name="im_about_subtitle_mau">Over 1 billion active users per month</string>
     <string name="im_about_known">OK</string>
+
+    <string name="mine_version">version</string>
+    <string name="cleanChatRecords">clean Chat Records</string>
+
 </resources>
