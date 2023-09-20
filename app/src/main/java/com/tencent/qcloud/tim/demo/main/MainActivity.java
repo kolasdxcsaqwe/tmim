@@ -36,6 +36,7 @@ import com.tencent.imsdk.v2.V2TIMFriendshipListener;
 import com.tencent.imsdk.v2.V2TIMManager;
 import com.tencent.imsdk.v2.V2TIMUserFullInfo;
 import com.tencent.imsdk.v2.V2TIMValueCallback;
+import com.tencent.qcloud.tim.demo.QrCaptureActivity;
 import com.tencent.qcloud.tim.demo.R;
 import com.tencent.qcloud.tim.demo.config.AppConfig;
 import com.tencent.qcloud.tim.demo.profile.ProfileFragment;
@@ -545,6 +546,18 @@ public class MainActivity extends BaseLightActivity {
                     TUIUtils.startActivity("StartGroupChatActivity", bundle);
                 }
 
+                if (TextUtils.equals(action.getActionName(), getResources().getString(R.string.add_friend))) {
+                    Bundle bundle = new Bundle();
+                    bundle.putBoolean(TUIContactConstants.GroupType.GROUP, false);
+                    TUIUtils.startActivity("AddMoreActivity", bundle);
+                }
+
+                if (TextUtils.equals(action.getActionName(), getResources().getString(R.string.scan_qrcode))) {
+                    Intent intent = new Intent(MainActivity.this, QrCaptureActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    MainActivity.this.startActivity(intent);
+                }
+
                 menu.hide();
             }
         };
@@ -553,14 +566,14 @@ public class MainActivity extends BaseLightActivity {
 
         PopMenuAction action = new PopMenuAction();
 
-        action.setActionName(getResources().getString(R.string.start_conversation));
         action.setActionClickListener(popActionClickListener);
-        action.setIconResId(R.drawable.create_c2c);
+        action.setActionName(getResources().getString(R.string.add_friend));
+        action.setIconResId(com.tencent.qcloud.tuikit.tuicontact.R.drawable.contact_add_friend);
         menuActions.add(action);
 
         action = new PopMenuAction();
-        action.setActionName(getResources().getString(R.string.create_group_chat));
-        action.setIconResId(R.drawable.group_icon);
+        action.setActionName(getResources().getString(R.string.scan_qrcode));
+        action.setIconResId(R.drawable.icon_qr);
         action.setActionClickListener(popActionClickListener);
         menuActions.add(action);
 
@@ -593,6 +606,12 @@ public class MainActivity extends BaseLightActivity {
                     bundle.putBoolean(TUIContactConstants.GroupType.GROUP, true);
                     TUIUtils.startActivity("AddMoreActivity", bundle);
                 }
+                if (TextUtils.equals(action.getActionName(), getResources().getString(R.string.scan_qrcode))) {
+                    Intent intent = new Intent(MainActivity.this, QrCaptureActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    MainActivity.this.startActivity(intent);
+                }
+
                 menu.hide();
             }
         };
@@ -603,8 +622,8 @@ public class MainActivity extends BaseLightActivity {
         menuActionList.add(action);
 
         action = new PopMenuAction();
-        action.setActionName(getResources().getString(R.string.add_group));
-        action.setIconResId(com.tencent.qcloud.tuikit.tuicontact.R.drawable.contact_add_group);
+        action.setActionName(getResources().getString(R.string.scan_qrcode));
+        action.setIconResId(R.drawable.icon_qr);
         action.setActionClickListener(popActionClickListener);
         menuActionList.add(action);
         menu.setMenuAction(menuActionList);
